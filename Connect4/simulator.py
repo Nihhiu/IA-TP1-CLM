@@ -1,6 +1,6 @@
-from src.games.connect4.player import Connect4Player
-from src.games.connect4.state import Connect4State
-from src.games.game_simulator import GameSimulator
+from Connect4.player import Connect4Player
+from Connect4.state import Connect4State
+from game_simulator import GameSimulator
 
 
 class Connect4Simulator(GameSimulator):

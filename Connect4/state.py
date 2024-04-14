@@ -1,8 +1,8 @@
 from typing import Optional
 
-from src.games.connect4.action import Connect4Action
-from src.games.connect4.result import Connect4Result
-from src.games.state import State
+from Connect4.action import Connect4Action
+from Connect4.result import Connect4Result
+from state import State
 
 
 class Connect4State(State):

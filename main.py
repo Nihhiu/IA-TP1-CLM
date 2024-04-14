@@ -1,11 +1,20 @@
-from Connect4.connect4 import Connect4Simulator 
-from Connect4.connect4.players import Connect4HumanPlayer, Connect4RandomBot, Connect4GreedyBot, Connect4MinimaxBot
+from Connect4.simulator import Connect4Simulator 
+from Connect4.players.human import Connect4HumanPlayer
+from Connect4.players.random import Connect4RandomBot
+from Connect4.players.greedy import Connect4GreedyBot
+from Connect4.players.minimax import Connect4MinimaxBot
 
-# from LimitPoker import LimitPokerSimulator
-# from LimitPoker.players import LimitPokerHumanPlayer, LimitPokerRandomBot, LimitPokerGreedyBot, LimitPokerMinimaxBot
+# from LimitPoker.simulator import LimitPokerSimulator
+# from LimitPoker.players.human import LimitPokerHumanPlayer
+# from LimitPoker.players.random import LimitPokerRandomBot
+# from LimitPoker.players.greedy import LimitPokerGreedyBot
+# from LimitPoker.players.minimax import LimitPokerMinimaxBot
 
-# from Minesweeper import MinesweeperSimulator
-# from Minesweeper.players import MinesweeperHumanPlayer, MinesweeperRandomBot, MinesweeperGreedyBot, MinesweeperMinimaxBot
+# from Minesweeper.simulator import MinesweeperSimulator
+# from Minesweeper.players.human import MinesweeperHumanPlayer
+# from Minesweeper.players.random import MinesweeperRandomBot
+# from Minesweeper.players.greedy import MinesweeperGreedyBot
+# from Minesweeper.players.minimax import MinesweeperMinimaxBot
 
 from game_simulator import GameSimulator
 import player

@@ -1,10 +1,10 @@
 from abc import ABC
 
-from LimitPoker.result import LimitPokerResult
+from Connect4.result import Connect4Result
 from player import Player
 
 
-class LimitPokerPlayer(Player, ABC):
+class Connect4Player(Player, ABC):
 
     def __init__(self, name):
         super().__init__(name)
@@ -13,7 +13,7 @@ class LimitPokerPlayer(Player, ABC):
         stats is a dictionary that will store the number of times each result occurred
         """
         self.__stats = {}
-        for c4res in LimitPokerResult:
+        for c4res in Connect4Result:
             self.__stats[c4res] = 0
 
         """
@@ -22,7 +22,7 @@ class LimitPokerPlayer(Player, ABC):
         self.__num_games = 0
 
     def print_stats(self):
-        num_wins = self.__stats[LimitPokerResult.WIN]
+        num_wins = self.__stats[Connect4Result.WIN]
         print(
             f"Player {self.get_name()}: {num_wins}/{self.__num_games} wins ({num_wins * 100.0 / self.__num_games} win "
             f"rate)")
@@ -30,6 +30,6 @@ class LimitPokerPlayer(Player, ABC):
     def event_new_game(self):
         self.__num_games += 1
 
-    def event_result(self, pos: int, result: LimitPokerResult):
+    def event_result(self, pos: int, result: Connect4Result):
         if pos == self.get_current_pos():
             self.__stats[result] += 1

@@ -1,23 +1,23 @@
 from random import choice
-from src.games.connect4.action import Connect4Action
-from src.games.connect4.player import Connect4Player
-from src.games.connect4.state import Connect4State
-from src.games.state import State
+from LimitPoker.action import LimitPokerAction
+from LimitPoker.player import LimitPokerPlayer
+from LimitPoker.state import LimitPokerState
+from state import State
 
 
-class GreedyLimitPokerPlayer(Connect4Player):
+class LimitPokerGreedyBot(LimitPokerPlayer):
 
     def __init__(self, name):
         super().__init__(name)
 
-    def get_action(self, state: Connect4State):
+    def get_action(self, state: LimitPokerState):
         grid = state.get_grid()
 
         selected_col = None
         max_count = 0
 
         for col in range(0, state.get_num_cols()):
-            if not state.validate_action(Connect4Action(col)):
+            if not state.validate_action(LimitPokerAction(col)):
                 continue
 
             count = 0
@@ -33,7 +33,7 @@ class GreedyLimitPokerPlayer(Connect4Player):
         if selected_col is None:
             raise Exception("There is no valid action")
 
-        return Connect4Action(selected_col)
+        return LimitPokerAction(selected_col)
 
     def event_action(self, pos: int, action, new_state: State):
         # ignore

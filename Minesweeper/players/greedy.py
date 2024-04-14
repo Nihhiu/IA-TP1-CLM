@@ -1,23 +1,23 @@
 from random import choice
-from src.games.connect4.action import Connect4Action
-from src.games.connect4.player import Connect4Player
-from src.games.connect4.state import Connect4State
-from src.games.state import State
+from Minesweeper.action import MinesweeperAction
+from Minesweeper.player import MinesweeperPlayer
+from Minesweeper.state import MinesweeperState
+from state import State
 
 
-class GreedyMinesweeperPlayer(Connect4Player):
+class MinesweeperGreedyBot(MinesweeperPlayer):
 
     def __init__(self, name):
         super().__init__(name)
 
-    def get_action(self, state: Connect4State):
+    def get_action(self, state: MinesweeperState):
         grid = state.get_grid()
 
         selected_col = None
         max_count = 0
 
         for col in range(0, state.get_num_cols()):
-            if not state.validate_action(Connect4Action(col)):
+            if not state.validate_action(MinesweeperAction(col)):
                 continue
 
             count = 0
@@ -33,7 +33,7 @@ class GreedyMinesweeperPlayer(Connect4Player):
         if selected_col is None:
             raise Exception("There is no valid action")
 
-        return Connect4Action(selected_col)
+        return MinesweeperAction(selected_col)
 
     def event_action(self, pos: int, action, new_state: State):
         # ignore

@@ -1,11 +1,11 @@
 from typing import Optional
 
-from LimitPoker.action import LimitPokerAction
-from LimitPoker.result import LimitPokerResult
+from Minesweeper.action import MinesweeperAction
+from Minesweeper.result import MinesweeperResult
 from state import State
 
 
-class LimitPokerState(State):
+class MinesweeperState(State):
     EMPTY_CELL = -1
 
     def __init__(self, num_rows: int = 6, num_cols: int = 7):
@@ -25,7 +25,7 @@ class LimitPokerState(State):
         """
         the grid
         """
-        self.__grid = [[LimitPokerState.EMPTY_CELL for _i in range(self.__num_cols)] for _j in range(self.__num_rows)]
+        self.__grid = [[MinesweeperState.EMPTY_CELL for _i in range(self.__num_cols)] for _j in range(self.__num_rows)]
 
         """
         counts the number of turns in the current game
@@ -87,7 +87,7 @@ class LimitPokerState(State):
     def get_num_players(self):
         return 2
 
-    def validate_action(self, action: LimitPokerAction) -> bool:
+    def validate_action(self, action: MinesweeperAction) -> bool:
         col = action.get_col()
 
         # valid column
@@ -95,12 +95,12 @@ class LimitPokerState(State):
             return False
 
         # full column
-        if self.__grid[0][col] != LimitPokerState.EMPTY_CELL:
+        if self.__grid[0][col] != MinesweeperState.EMPTY_CELL:
             return False
 
         return True
 
-    def update(self, action: LimitPokerAction):
+    def update(self, action: MinesweeperAction):
         col = action.get_col()
 
         # drop the checker
@@ -121,7 +121,7 @@ class LimitPokerState(State):
         print({
                   0: 'R',
                   1: 'B',
-                  LimitPokerState.EMPTY_CELL: ' '
+                  MinesweeperState.EMPTY_CELL: ' '
               }[self.__grid[row][col]], end="")
 
     def __display_numbers(self):
@@ -161,7 +161,7 @@ class LimitPokerState(State):
         return self.__acting_player
 
     def clone(self):
-        cloned_state = LimitPokerState(self.__num_rows, self.__num_cols)
+        cloned_state = MinesweeperState(self.__num_rows, self.__num_cols)
         cloned_state.__turns_count = self.__turns_count
         cloned_state.__acting_player = self.__acting_player
         cloned_state.__has_winner = self.__has_winner
@@ -170,11 +170,11 @@ class LimitPokerState(State):
                 cloned_state.__grid[row][col] = self.__grid[row][col]
         return cloned_state
 
-    def get_result(self, pos) -> Optional[LimitPokerResult]:
+    def get_result(self, pos) -> Optional[MinesweeperResult]:
         if self.__has_winner:
-            return LimitPokerResult.LOOSE if pos == self.__acting_player else LimitPokerResult.WIN
+            return MinesweeperResult.LOOSE if pos == self.__acting_player else MinesweeperResult.WIN
         if self.__is_full():
-            return LimitPokerResult.DRAW
+            return MinesweeperResult.DRAW
         return None
 
     def get_num_rows(self):
@@ -190,7 +190,7 @@ class LimitPokerState(State):
         return list(filter(
             lambda action: self.validate_action(action),
             map(
-                lambda pos: LimitPokerAction(pos),
+                lambda pos: MinesweeperAction(pos),
                 range(0, self.get_num_cols()))
         ))
 

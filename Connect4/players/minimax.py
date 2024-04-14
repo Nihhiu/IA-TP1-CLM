@@ -1,12 +1,12 @@
 import math
 
-from src.games.connect4.player import Connect4Player
-from src.games.connect4.result import Connect4Result
-from src.games.connect4.state import Connect4State
-from src.games.state import State
+from Connect4.player import Connect4Player
+from Connect4.result import Connect4Result
+from Connect4.state import Connect4State
+from state import State
 
 
-class MinimaxConnect4Player(Connect4Player):
+class Connect4MinimaxBot(Connect4Player):
 
     def __init__(self, name):
         super().__init__(name)

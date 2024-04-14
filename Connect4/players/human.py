@@ -1,9 +1,9 @@
-from src.games.connect4.action import Connect4Action
-from src.games.connect4.player import Connect4Player
-from src.games.connect4.state import Connect4State
+from Connect4.action import Connect4Action
+from Connect4.player import Connect4Player
+from Connect4.state import Connect4State
 
 
-class HumanConnect4Player(Connect4Player):
+class Connect4HumanPlayer(Connect4Player):
 
     def __init__(self, name):
         super().__init__(name)

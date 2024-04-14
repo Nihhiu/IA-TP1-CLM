@@ -1,18 +1,18 @@
 from random import randint
 
-from src.games.connect4.action import Connect4Action
-from src.games.connect4.player import Connect4Player
-from src.games.connect4.state import Connect4State
-from src.games.state import State
+from LimitPoker.action import LimitPokerAction
+from LimitPoker.player import LimitPokerPlayer
+from LimitPoker.state import LimitPokerState
+from state import State
 
 
-class RandomLimitPokerPlayer(Connect4Player):
+class LimitPokerRandomBot(LimitPokerPlayer):
 
     def __init__(self, name):
         super().__init__(name)
 
-    def get_action(self, state: Connect4State):
-        return Connect4Action(randint(0, state.get_num_cols()))
+    def get_action(self, state: LimitPokerState):
+        return LimitPokerAction(randint(0, state.get_num_cols()))
 
     def event_action(self, pos: int, action, new_state: State):
         # ignore
